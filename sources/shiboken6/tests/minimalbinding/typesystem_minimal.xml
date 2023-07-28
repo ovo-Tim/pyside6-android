@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typesystem package="minimal">
+
+    <primitive-type name="MinBool" target-lang-api-name="PyBool" default-constructor="MinBool(false)">
+        <include file-name="minbool.h" location="global"/>
+        <conversion-rule>
+            <native-to-target>
+            return PyBool_FromLong(%in.value());
+            </native-to-target>
+            <target-to-native>
+                <add-conversion type="PyBool" check="PyBool_Check(%in)">
+                %out = %OUTTYPE(%in == Py_True);
+                </add-conversion>
+            </target-to-native>
+        </conversion-rule>
+    </primitive-type>
+
+    <opaque-container name="std::list" opaque-containers="int:StdIntList"/>
+
+    <opaque-container name="std::vector" opaque-containers="int:StdIntVector"/>
+
+    <opaque-container name="std::array" opaque-containers="int,3:StdIntArray"/>
+
+    <?if c++20?> <!-- FIXME PYSIDE 7: Remove "if" -->
+    <opaque-container name="std::span" opaque-containers="int,3:StdIntSpan3"/>
+    <?endif?>
+
+    <object-type name="Obj"/>
+    <value-type name="Val">
+        <enum-type name="ValEnum"/>
+    </value-type>
+    <value-type name="ListUser">
+        <modify-field name="m_stdIntList" opaque-container="yes"/>
+        <modify-function signature="getIntList()">
+            <modify-argument index="return">
+                <replace-type modified-type="StdIntList"/>
+            </modify-argument>
+        </modify-function>
+        <modify-function signature="getConstIntList()const">
+            <modify-argument index="return">
+                <replace-type modified-type="StdIntList"/>
+            </modify-argument>
+        </modify-function>
+    </value-type>
+
+    <value-type name="SpanUser">
+        <?if c++20?> <!-- FIXME PYSIDE 7: Remove "if" -->
+        <modify-function signature="getIntSpan3_OpaqueContainer()">
+            <modify-argument index="return">
+                <replace-type modified-type="StdIntSpan3"/>
+            </modify-argument>
+        </modify-function>
+        <?endif?>
+    </value-type>
+
+    <value-type name="MinBoolUser"/>
+
+    <value-type name="ContainerUser">
+        <modify-function signature="intVector()">
+            <modify-argument index="return">
+                <replace-type modified-type="StdIntVector"/>
+            </modify-argument>
+        </modify-function>
+        <modify-function signature="intArray()">
+            <modify-argument index="return">
+                <replace-type modified-type="StdIntArray"/>
+            </modify-argument>
+        </modify-function>
+    </value-type>
+
+    <!-- Test wrapping of a typedef -->
+    <function signature="arrayFuncInt(std::vector&lt;int&gt;)" />
+    <!-- Note manual expansion of the typedef -->
+    <function signature="arrayFuncIntTypedef(std::vector&lt;int&gt;)" />
+
+    <function signature="arrayFuncIntReturn(int)" />
+    <function signature="arrayFuncIntReturnTypedef(int)" />
+
+    <!-- Test wrapping of a typedef of a typedef -->
+    <function signature="arrayFunc(std::vector&lt;int&gt;)" />
+    <!-- Note manual expansion of the typedef  -->
+    <function signature="arrayFuncTypedef(std::vector&lt;int&gt;)" />
+
+    <function signature="arrayFuncReturn(int)" />
+    <function signature="arrayFuncReturnTypedef(int)" />
+</typesystem>

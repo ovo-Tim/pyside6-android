@@ -1,0 +1,42 @@
+/* Tables */
+.section .docutils.container td {
+    float:left;
+}
+
+table.docutils {
+    margin-right: auto;
+    margin-bottom: 10px;
+    border: none;
+    width: initial;
+    font-size: 0.8em;
+}
+
+table.docutils.colwidths-given td {
+    float: none;
+}
+
+table.docutils th,
+table.docutils td {
+    padding-left:0;
+    border: none;
+}
+
+table.docutils td ul {
+    margin:0
+}
+
+table.docutils td ul > li {
+    margin: 0 0 0.5em;
+}
+
+.hide {
+    display: none;
+}
+
+.fixed .container {
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 3.9%; /* 0? */
+  position:relative;
+  overflow:visible
+}

@@ -1,0 +1,23 @@
+{
+    "files": ["main.py",
+              "bluetoothbaseclass.py",
+              "connectionhandler.py",
+              "devicefinder.py",
+              "devicehandler.py",
+              "deviceinfo.py",
+              "heartrate_global.py",
+              "HeartRateGame/qmldir",
+              "HeartRateGame/Main.qml",
+              "HeartRateGame/App.qml",
+              "HeartRateGame/BluetoothAlarmDialog.qml",
+              "HeartRateGame/BottomLine.qml",
+              "HeartRateGame/Connect.qml",
+              "HeartRateGame/GameButton.qml",
+              "HeartRateGame/GamePage.qml",
+              "HeartRateGame/GameSettings.qml",
+              "HeartRateGame/Measure.qml",
+              "HeartRateGame/SplashScreen.qml",
+              "HeartRateGame/Stats.qml",
+              "HeartRateGame/StatsLabel.qml",
+              "HeartRateGame/TitleBar.qml"]
+}

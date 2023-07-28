@@ -1,0 +1,6 @@
+{
+    "files": ["quicknanobrowser.py", "ApplicationRoot.qml",
+              "BrowserDialog.qml", "BrowserWindow.qml", "DownloadView.qml",
+              "FindBar.qml", "FullScreenNotification.qml",
+              "resources.qrc"]
+}

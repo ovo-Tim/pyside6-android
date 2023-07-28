@@ -1,0 +1,3 @@
+{
+    "files": ["eratosthenes_trio.py", "eratosthenes_asyncio.py"]
+}

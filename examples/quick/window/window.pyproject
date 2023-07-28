@@ -1,0 +1,3 @@
+{
+    "files": ["main.py", "window.qml", "window.qrc", "Splash.qml", "AllScreens.qml", "CurrentScreen.qml"]
+}

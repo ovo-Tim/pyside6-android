@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/qt-project.org/logos">
+        <file alias="pysidelogo.png">../doc/_static/qtforpython.png</file>
+    </qresource>
+</RCC>

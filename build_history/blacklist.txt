@@ -1,0 +1,72 @@
+[smart::smart_pointer]
+    darwin ci
+[testmodifydocumentation]
+    darwin arm
+[signals::signal_signature_test]
+    linux
+    darwin
+    win32
+[Qt3DExtras::qt3dextras_test]
+    win32 ci
+    linux
+    darwin
+[QtMultimedia::audio_test]
+    linux
+    darwin
+    win32
+# Cannot create metal surface
+[QtMultimediaWidgets::qmultimediawidgets]
+    darwin ci
+# PYSIDE-474
+[QtWebEngineWidgets::pyside-474-qtwebengineview]
+    py2
+    py3
+[QtCore::qthread_test]
+# PYSIDE-754
+[QtWebEngineCore::web_engine_custom_scheme]
+    win32
+    linux
+    darwin
+# In addition to a pre-existing windows failure,
+# qtlocation/ac899dcc40bb3ad09307583fb7e6befd45a77b33 / QTBUG-66304 introduced
+# a failure in 5.14
+[QtPositioning::positioning]
+    win32
+    linux
+    darwin
+# Open GL functions failures on macOS (2/2020)
+[QtQml::qqmlnetwork_test]
+    linux ci    # extended, see PyPy section below
+[QtWidgets::bug_750]
+    darwin ci
+[QtWidgets::qpicture_test]
+    darwin ci
+
+# PYSIDE-535: These errors are still present. Please try to remove one :)
+[sample::mixed_mi]
+    pypy
+[sample::sample]
+    pypy
+[sample::str]
+    pypy
+[sample::typedealloc]
+    pypy
+[pysidetest::homonymoussignalandmethod_test]
+    pypy
+[pysidetest::mixin_signal_slots_test]
+    pypy
+[signals::qobject_sender_test]
+    pypy
+[QtCore::classinfo_test]
+    pypy
+[QtCore::qbytearray_test]
+    pypy
+[QtWidgets::bug_836]
+    pypy
+[QtQml::bug_825]
+    pypy
+[QtQml::javascript_exceptions]
+    pypy
+[QtQml::qqmlincubator_incubateWhile]
+    pypy        # gives timeout on macOS if I run video converter while testing
+# 2022-03-04 PyPy: Currently 28 of 657 tests fail

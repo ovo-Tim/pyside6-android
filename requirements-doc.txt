@@ -1,0 +1,6 @@
+sphinx<6.0,>5
+sphinx-design
+sphinx-copybutton
+myst-parser
+furo
+graphviz

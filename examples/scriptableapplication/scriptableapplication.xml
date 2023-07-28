@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!--
+// Copyright (C) 2017 The Qt Company Ltd.
+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
+-->
+<typesystem package="AppLib">
+    <load-typesystem name="typesystem_widgets.xml" generate="no"/>
+    <object-type name="MainWindow"/>
+</typesystem>

@@ -1,0 +1,4 @@
+{
+    "files": ["main.py", "person.py",
+              "People/Main.qml", "People/qmldir"]
+}

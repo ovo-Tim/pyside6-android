@@ -1,0 +1,100 @@
+version: 2
+accept_configuration:
+  condition: or
+  conditions:
+    - condition: property
+      property: features
+      contains_value: LicenseCheck
+    - condition: and
+      conditions:
+        - condition: property  # No cross compilation
+          property: host.os
+          equals_property: target.os
+        - condition: property
+          property: features
+          contains_value: Packaging
+        - condition: property
+          property: features
+          not_contains_value: UseLegacyInstructions
+        - condition: property  # MinGW and msvc2015 are not supported
+          property: target.compiler
+          not_in_values: [Mingw, MSVC2015]
+        - condition: property  # Webassembly
+          property: target.osVersion
+          not_equals_value: WebAssembly
+        - condition: property  # Windows on Arm
+          property: target.arch
+          not_equals_value: ARM64
+    - condition: and
+      conditions:
+        - condition: property  # No cross compilation
+          property: host.osVersion
+          equals_value: MacOS_10_15
+        - condition: property
+          property: features
+          contains_value: TestOnly
+        - condition: property
+          property: features
+          contains_value: Packaging
+    - condition: and
+      conditions:
+        - condition: property
+          property: host.osVersion
+          equals_value: MacOS_11_00
+        - condition: property
+          property: features
+          contains_value: Packaging
+    - condition: and
+      conditions:
+        - condition: property
+          property: host.osVersion
+          equals_value: MacOS_11_00
+        - condition: property
+          property: host.arch
+          equals_value: ARM64
+        - condition: property
+          property: features
+          contains_value: TestOnly
+        - condition: property
+          property: features
+          contains_value: Packaging
+
+machine_type:
+  Build:
+    cores: 8
+
+upload_pyside: &upload_pyside
+     type: Group
+     instructions:
+       - type: UploadArtifact
+         archiveDirectory: "{{.AgentWorkingDir}}\\pyside"
+         transferType: UploadModuleBuildArtifact
+         maxTimeInSeconds: 1200
+         maxTimeBetweenOutput: 1200
+         enable_if:
+           condition: property
+           property: host.os
+           equals_value: Windows
+       - type: UploadArtifact
+         archiveDirectory: "{{.AgentWorkingDir}}/pyside"
+         transferType: UploadModuleBuildArtifact
+         maxTimeInSeconds: 1200
+         maxTimeBetweenOutput: 1200
+         enable_if:
+           condition: property
+           property: host.os
+           not_equals_value: Windows
+
+instructions:
+     LicenseCheck:
+      - !include "{{pyside/pyside-setup}}/execute_license_check.yaml"
+     Build:
+      - !include "{{pyside/pyside-setup}}/common_environment.yaml"
+      - !include "{{pyside/pyside-setup}}/find_path_to_msvc_compiler.yaml"
+      - !include "{{pyside/pyside-setup}}/execute_build_instructions.yaml"
+      - *upload_pyside
+     Test:
+      - !include "{{pyside/pyside-setup}}/common_environment.yaml"
+      - !include "{{pyside/pyside-setup}}/find_path_to_msvc_compiler.yaml"
+      - !include "{{pyside/pyside-setup}}/relocate_pyside.yaml"
+      - !include "{{pyside/pyside-setup}}/execute_test_instructions.yaml"

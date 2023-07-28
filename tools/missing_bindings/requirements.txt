@@ -1,0 +1,14 @@
+beautifulsoup4
+pandas
+matplotlib
+
+# PySide
+PySide6
+
+# PyQt
+PyQt6
+PyQt6-3D
+PyQt6-Charts
+PyQt6-DataVisualization
+PyQt6-NetworkAuth
+PyQt6-WebEngine

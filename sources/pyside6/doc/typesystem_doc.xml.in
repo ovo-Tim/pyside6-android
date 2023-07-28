@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--
+// Copyright (C) 2016 The Qt Company Ltd.
+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
+-->
+<typesystem package="PySide">
+    <suppress-warning text="File containing conversion code for *" />
+    <suppress-warning text="File for inject code not exist: *" />
+    <suppress-warning text="Can't find qdoc3 file for class QMatrix4x3, tried: /home/hugo/src/pyside/build/doc/qdoc3-output/qmatrix4x3.xml" />
+    <suppress-warning text="Can't find qdoc3 file for class QMatrix3x4, tried: /home/hugo/src/pyside/build/doc/qdoc3-output/qmatrix3x4.xml" />
+    <suppress-warning text="Can't find qdoc3 file for class QMatrix2x3, tried: /home/hugo/src/pyside/build/doc/qdoc3-output/qmatrix2x3.xml" />
+    <suppress-warning text="Can't find qdoc3 file for class QMatrix4x2, tried: /home/hugo/src/pyside/build/doc/qdoc3-output/qmatrix4x2.xml" />
+    <suppress-warning text="Can't find qdoc3 file for class QMatrix3x3, tried: /home/hugo/src/pyside/build/doc/qdoc3-output/qmatrix3x3.xml" />
+    <suppress-warning text="Can't find qdoc3 file for class QMatrix2x2, tried: /home/hugo/src/pyside/build/doc/qdoc3-output/qmatrix2x2.xml" />
+    <suppress-warning text="Can't find qdoc3 file for class QMatrix3x2, tried: /home/hugo/src/pyside/build/doc/qdoc3-output/qmatrix3x2.xml" />
+    <suppress-warning text="Can't find qdoc3 file for class QMatrix2x4, tried: /home/hugo/src/pyside/build/doc/qdoc3-output/qmatrix2x4.xml" />
+<!-- Modules to be appended -->
